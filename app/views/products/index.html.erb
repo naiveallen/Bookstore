@@ -5,16 +5,16 @@
 
 <table>
   
-  <tbody>
+  <tbody> 
     <% @products.each do |product| %>
-      <tr>
-        <td class="list_image"><%= image_tag(product.image) %></td>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even')%>">
+        <td><%= image_tag(product.image, class: "list_image") %></td>
         <td class="list_description">
           <dl>
             <dt><%= product.name %></dt>
             <dd>
               <%= product.description %><br><br>
-              <%= product.price %>
+              $<%= product.price %>
             </dd>
           </dl>
         </td>
