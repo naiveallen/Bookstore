@@ -1,10 +1,13 @@
 class LineitemsController < ApplicationController
   before_action :set_lineitem, only: [:show, :edit, :update, :destroy]
 
+  include CurrentCart
+  before_action :set_cart
+
   # GET /lineitems
   # GET /lineitems.json
   def index
-    @lineitems = Lineitem.all
+    @lineitems = Lineitem.where(cart_id: @cart.id)
   end
 
   # GET /lineitems/1
@@ -24,17 +27,15 @@ class LineitemsController < ApplicationController
   # POST /lineitems
   # POST /lineitems.json
   def create
-    @lineitem = Lineitem.new(lineitem_params)
 
+    product = Product.find(params[:product_id])
+    @line_item = @cart.add_item(product.id)
     respond_to do |format|
-      if @lineitem.save
-        format.html { redirect_to @lineitem, notice: 'Lineitem was successfully created.' }
-        format.json { render :show, status: :created, location: @lineitem }
-      else
-        format.html { render :new }
-        format.json { render json: @lineitem.errors, status: :unprocessable_entity }
+      if @line_item.save
+        format.html { redirect_to @line_item, notice: 'Line item was successfully created.' }
       end
     end
+
   end
 
   # PATCH/PUT /lineitems/1
