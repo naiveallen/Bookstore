@@ -37,7 +37,7 @@
 #columns {
     background: #9c947a;
     #main {
-        margin-left: 17em;
+        margin-left: 24em;
         padding: 1em;
         background: white;
     }
@@ -45,8 +45,18 @@
     #side {
         float: left;
         padding: 1em 2em;
-        width: 13em;
+        width: 20em;
         background: #9c947a;
+        input {font-size: small;}
+        #cart {
+            font-size: small; 
+            color: white;
+            table {
+                border-top: 2px dotted #599;
+                border-bottom: 2px dotted #599;
+                margin-bottom: 10px;
+            }
+        }
         ul {
             padding: 0;
             li {
