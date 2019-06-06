@@ -36,6 +36,7 @@ class LineitemsController < ApplicationController
         format.js
         format.json { render :show, status: :created, location: @line_item }
       else
+        puts "fail save line item"
         format.html { render :new }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
