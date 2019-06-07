@@ -19,12 +19,13 @@
             <div id="cart">
               <%= render @cart %>
             </div>
+            <br><br>
             <ul>
               <li><a href="/">Home</a></li>
               <li><a href="#">Questions</a></li>
               <li><a href="#">News</a></li>
               <li><a href="#">Contact</a></li>
-              <li><a href="/search/index">Search</a></li>
+              <li><a href="#">Search</a></li>
               <%= button_to 'Login', login_path %>
             </ul>
             <% if session[:user_id] %>

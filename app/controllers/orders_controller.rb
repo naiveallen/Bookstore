@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  skip_before_action :authorize
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
@@ -15,7 +16,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     if @cart.lineitems.empty?
-      redirect_to shopper_index_url, notice: "Your cart is empty."
+      redirect_to shopper_url, notice: "Your cart is empty."
       return
     end
     @order = Order.new
@@ -35,7 +36,7 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        format.html { redirect_to shopper_index_url, notice: 'Thank you for your order.' }
+        format.html { redirect_to shopper_url, notice: 'Thank you for your order.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
