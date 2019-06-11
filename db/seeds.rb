@@ -13,5 +13,5 @@ Product.create(name: 'Moon and Sixpence', description: "Said to be loosely based
 Product.create(name: 'Letters of Vincent Van Gogh', description: "Few artists' letters are as self-revelatory as Vincent Van Gogh's, and the selection included here, spanning the whole of his artistic career, sheds light on every facet of the life and work of this complex and tortured man.", image: '1-9780140446746.jpg', price: 19.99)
 
 
-
+User.create(name: 'admin', password: '123456')
 
